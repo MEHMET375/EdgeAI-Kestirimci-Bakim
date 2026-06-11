@@ -127,7 +127,7 @@ if len(veri_kuyrugu) > 0:
                 value = rul_degeri,
                 domain = {'x': [0, 1], 'y': [0, 1]},
                 title = {'text': "⏳ Kalan Faydalı Ömür (RUL) %", 'font': {'size': 20, 'color': 'white'}},
-                number = {'font': {'size': 45, 'color': bar_color}}, # <-- HATAYA SEBEP OLAN KISMI SİLDİM
+                number = {'font': {'size': 45, 'color': bar_color}}, 
                 gauge = {
                     'axis': {'range': [None, 100], 'tickwidth': 2, 'tickcolor': "white"},
                     'bar': {'color': bar_color, 'thickness': 0.3},
