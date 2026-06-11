@@ -8,7 +8,7 @@ import time
 # Sayfa Yapılandırması (Geniş Ekran)
 st.set_page_config(page_title="Edge AI Kestirimci Bakım", layout="wide", page_icon="🏭")
 
-# --- ARKA PLAN / MQTT BACKEND (DOKUNULMADI) ---
+# --- ARKA PLAN / MQTT BACKEND ---
 @st.cache_resource
 def get_veri_kuyrugu():
     return []
@@ -38,7 +38,7 @@ mqtt_istemci = mqtt_baslat()
 
 # --- UI / FRONTEND TASARIMI (ENDÜSTRİ 4.0 SCADA EKRANI) ---
 
-# Şaşalı Başlık
+# Başlık
 st.markdown("<h1 style='text-align: center; color: #00E5FF; text-shadow: 0px 0px 10px #00E5FF;'>🏭 Endüstri 4.0: AI Tabanlı Kestirimci Bakım Merkezi</h1>", unsafe_allow_html=True)
 st.markdown("---")
 
@@ -53,7 +53,7 @@ if len(veri_kuyrugu) > 0:
     
     durum_arizali = son_veri['durum'] == "ARIZALI"
     
-    # 1. DİNAMİK ALARM SİSTEMİ (Devasa HTML Banner)
+    # 1. DİNAMİK ALARM SİSTEMİ (HTML Banner)
     with alarm_alani.container():
         if durum_arizali:
             # Arıza durumunda yanıp sönen (blink) kırmızı alarm
@@ -64,7 +64,7 @@ if len(veri_kuyrugu) > 0:
             <br>
             """, unsafe_allow_html=True)
         else:
-            # Sağlam durumunda güven veren yeşil bar
+            # Sağlam durumunda yeşil bar
             st.markdown("""
             <div style="background-color:#00c853; padding:15px; border-radius:10px; text-align:center; box-shadow: 0px 0px 15px #00c853;">
                 <h3 style="color:white; margin:0;">✅ Sistem Normal - Yapay Zeka Aktif İzlemede</h3>
@@ -72,7 +72,7 @@ if len(veri_kuyrugu) > 0:
             <br>
             """, unsafe_allow_html=True)
             
-    # 2. YAN YANA HAVALI METRİK KARTLARI
+    # 2. YAN YANA METRİK KARTLARI
     with metrik_alani.container():
         c1, c2, c3 = st.columns(3)
         renk = "inverse" if durum_arizali else "normal"
@@ -127,7 +127,7 @@ if len(veri_kuyrugu) > 0:
                 value = rul_degeri,
                 domain = {'x': [0, 1], 'y': [0, 1]},
                 title = {'text': "⏳ Kalan Faydalı Ömür (RUL) %", 'font': {'size': 20, 'color': 'white'}},
-                number = {'font': {'size': 45, 'color': bar_color, 'fontweight': 'bold'}},
+                number = {'font': {'size': 45, 'color': bar_color}}, # <-- HATAYA SEBEP OLAN KISMI SİLDİM
                 gauge = {
                     'axis': {'range': [None, 100], 'tickwidth': 2, 'tickcolor': "white"},
                     'bar': {'color': bar_color, 'thickness': 0.3},
