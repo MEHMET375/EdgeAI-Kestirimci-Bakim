@@ -129,7 +129,7 @@ if len(veri_kuyrugu) > 0:
                 title = {'text': "⏳ Kalan Faydalı Ömür (RUL) %", 'font': {'size': 20, 'color': 'white'}},
                 number = {'font': {'size': 45, 'color': bar_color}}, 
                 gauge = {
-                    'axis': {'range': [None, 100], 'tickwidth': 2, 'tickcolor': "white"},
+                    'axis': {'range': [0, 100], 'tickvals': [0, 20, 40, 60, 80, 100], 'tickwidth': 2, 'tickcolor': "white"},
                     'bar': {'color': bar_color, 'thickness': 0.3},
                     'bgcolor': "rgba(0,0,0,0)",
                     'borderwidth': 2,
